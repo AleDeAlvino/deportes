@@ -48,9 +48,15 @@ class Team(models.Model):
 class Student(models.Model):
     SOF18 = 'SOF18'
     LAT18 = 'LAT18'
+    TEL18 = 'TEL18'
+    INF18 = 'INF18'
+    INC18 = 'INC18'
     PLAN_CHOICES = [
         (SOF18,'SOF18'),
         (LAT18,'LAT18'),
+        (TEL18,'TEL18'),
+        (INF18,'INF18'),
+        (INC18,'INC18'),
     ]
 
     PRIMERO = 1
