@@ -43,6 +43,9 @@ class Team(models.Model):
     max_students = models.IntegerField(null=True, blank=True)
     schedule = models.CharField(max_length=50)
     place = models.CharField(max_length=25, choices=PLACES_CHOICES, default=CANCHA_PASTO)
+    
+    def __str__(self):
+        return "{} {}".format(self.sport, self.schedule)
 
 
 class Student(models.Model):
@@ -77,3 +80,6 @@ class Student(models.Model):
     plan = models.CharField(max_length=5, choices=PLAN_CHOICES)
     liberado = models.BooleanField(default=False, blank=True)
     date_enrollment = models.DateTimeField(auto_now_add=True, blank=True)
+    
+    def __str__(self):
+        return "{} {} {}".format(self.expediente, self.last_name, self.first_name)
