@@ -8,17 +8,23 @@ from django.contrib.auth import logout
 
 # Create your views here.
 def home_view(request):
+    # Vista que muestra la oferta de talleres
     teams = Team.objects.all()
     return render(request, 'home.html', {'teams':teams})
+
+def panel_view(request):
+    # Vista que muestra el panel de control
+    teams = Team.objects.all()
+    return render(request, 'panel.html', {'teams':teams})
 
 def login_view(request):
     if request.method == 'POST':
         user = authenticate(username=request.POST['username'], password=request.POST['password'])
         if user is not None:
             login(request, user)
-            return HttpResponse("Bienvenido")
+            return HttpResponse('Panel')
         else:
-         return render(request, 'login.html', {'form':form})
+         return render(request, 'login.html', {'form':AuthenticationForm})
     else:
         form = AuthenticationForm()
         return render(request, 'login.html', {'form':form})
